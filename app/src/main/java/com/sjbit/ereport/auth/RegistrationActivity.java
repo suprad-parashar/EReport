@@ -79,7 +79,6 @@ public class RegistrationActivity extends AppCompatActivity {
 					confirmPasswordEditText.setError("Passwords do not match");
 					confirmPasswordEditText.requestFocus();
 				} else {
-					//TODO: Register User.
 					auth.createUserWithEmailAndPassword(email, password)
 							.addOnCompleteListener(task -> {
 								if (task.isSuccessful()) {

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sjbit.ereport.R;
 
@@ -30,6 +31,9 @@ public class RegistrationActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registration);
+
+//		FirebaseApp.initializeApp(this);
+//		auth = FirebaseAuth.getInstance();
 
 		nameEditText = findViewById(R.id.name);
 		emailEditText = findViewById(R.id.email);

@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "917301293613",
+    "firebase_url": "https://health-d5887.firebaseio.com",
+    "project_id": "health-d5887",
+    "storage_bucket": "health-d5887.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917301293613:android:1b7c78454508c500123ea4",
+        "android_client_info": {
+          "package_name": "com.sjbit.ereport"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "917301293613-g50nk4tfqkp5nargotgf856ov0fq4qm7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNh2gFmNKh56-_ruh2QnUl-YhqD5RFU3Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "917301293613-g50nk4tfqkp5nargotgf856ov0fq4qm7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917301293613:android:ae04aadb2c752b31123ea4",
+        "android_client_info": {
+          "package_name": "com.suprad.health"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "917301293613-enqa6ajdcaqijlue8vkmaq9pm2l0m869.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.suprad.health",
+            "certificate_hash": "aa71ed72e672eca8c64a64dddfb7b682149673c4"
+          }
+        },
+        {
+          "client_id": "917301293613-g50nk4tfqkp5nargotgf856ov0fq4qm7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNh2gFmNKh56-_ruh2QnUl-YhqD5RFU3Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "917301293613-g50nk4tfqkp5nargotgf856ov0fq4qm7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

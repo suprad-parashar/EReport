@@ -1,8 +1,10 @@
 package com.sjbit.ereport.home;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import com.sjbit.ereport.R;
 
 public class HomeActivity extends AppCompatActivity {
 

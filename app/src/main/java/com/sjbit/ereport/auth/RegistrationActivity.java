@@ -1,18 +1,16 @@
 package com.sjbit.ereport.auth;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sjbit.ereport.R;
 
@@ -21,30 +19,23 @@ public class RegistrationActivity extends AppCompatActivity {
 	//UI Variables
 	private EditText nameEditText, emailEditText;
 	private TextInputEditText passwordEditText, confirmPasswordEditText;
-	private Button signUpButton;
-	private TextView signInTextView;
 
 	//Firebase Variables
-	private FirebaseAuth auth = FirebaseAuth.getInstance();
+	private final FirebaseAuth auth = FirebaseAuth.getInstance();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registration);
 
-//		FirebaseApp.initializeApp(this);
-//		auth = FirebaseAuth.getInstance();
-
 		nameEditText = findViewById(R.id.name);
 		emailEditText = findViewById(R.id.email);
 		passwordEditText = findViewById(R.id.password);
 		confirmPasswordEditText = findViewById(R.id.confirm_password);
-		signUpButton = findViewById(R.id.sign_up);
-		signInTextView = findViewById(R.id.sign_in);
+		Button signUpButton = findViewById(R.id.sign_up);
+		TextView signInTextView = findViewById(R.id.sign_in);
 
-		signInTextView.setOnClickListener(view -> {
-			startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
-		});
+		signInTextView.setOnClickListener(view -> startActivity(new Intent(RegistrationActivity.this, LoginActivity.class)));
 
 		signUpButton.setOnClickListener(view -> {
 			String name = nameEditText.getText().toString();

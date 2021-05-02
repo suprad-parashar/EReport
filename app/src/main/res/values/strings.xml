@@ -14,4 +14,11 @@
     <string name="name">Name</string>
     <string name="reports">Reports</string>
     <string name="tile_image">Tile Image</string>
+    <string name="title_activity_home">MainActivity</string>
+    <string name="title_tab1">Home</string>
+    <string name="title_tab2">Hospitals</string>
+    <string name="title_tab3">Upload</string>
+    <string name="title_tab4">Docs</string>
+    <string name="title_tab5">Profile</string>
+    <string name="no_recent_activities">No Recent Activities</string>
 </resources>

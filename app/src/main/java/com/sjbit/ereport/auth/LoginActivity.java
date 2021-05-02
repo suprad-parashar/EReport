@@ -1,32 +1,33 @@
 package com.sjbit.ereport.auth;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.AuthResult;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.sjbit.ereport.R;
+import com.sjbit.ereport.main.HomeActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
 	//UI Variables.
 	private EditText emailEditText, passwordEditText;
-	private Button signInButton;
-	private TextView registerTextView;
 
 	//Firebase Variables.
-	private FirebaseAuth auth = FirebaseAuth.getInstance();
+	private final FirebaseAuth auth = FirebaseAuth.getInstance();
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		if (auth.getCurrentUser() != null) {
+			startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+			finish();
+		}
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +39,8 @@ public class LoginActivity extends AppCompatActivity {
 
 		emailEditText = findViewById(R.id.email);
 		passwordEditText = findViewById(R.id.password);
-		signInButton = findViewById(R.id.sign_in);
-		registerTextView = findViewById(R.id.register);
+		Button signInButton = findViewById(R.id.sign_in);
+		TextView registerTextView = findViewById(R.id.register);
 
 		registerTextView.setOnClickListener(view -> {
 			Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
@@ -52,7 +53,8 @@ public class LoginActivity extends AppCompatActivity {
 			auth.signInWithEmailAndPassword(email, password)
 					.addOnCompleteListener(task -> {
 						if (task.isSuccessful()) {
-							//TODO: Sign In User and Update the UI.
+							startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+							finish();
 						} else {
 							passwordEditText.setError("Invalid Credentials");
 							passwordEditText.requestFocus();

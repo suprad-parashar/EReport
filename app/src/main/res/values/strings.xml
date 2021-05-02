@@ -3,10 +3,10 @@
     <string name="logo">Logo</string>
     <string name="email">Email</string>
     <string name="email_prompt">Enter your email</string>
-    <string name="create_an_account">Create An Account</string>
+    <string name="create_an_account">New User? Create An Account</string>
     <string name="sign_in">Sign In</string>
     <string name="password">Password</string>
-    <string name="login_greeting">Login to eReport</string>
+    <string name="login_greeting">Login to HealthFile</string>
     <string name="background_image">Background Image</string>
     <string name="back_to_sign_in">Have an Account? Sign In</string>
     <string name="sign_up">Sign Up</string>

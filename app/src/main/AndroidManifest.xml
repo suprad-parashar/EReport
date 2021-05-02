@@ -11,15 +11,21 @@
         android:theme="@style/Theme.EReport">
         <activity
             android:name=".main.HomeActivity"
-            android:label="@string/title_activity_home"></activity>
+            android:label="@string/title_activity_home"
+            />
         <activity android:name=".auth.RegistrationActivity" />
-        <activity android:name=".auth.LoginActivity">
+        <activity android:name=".auth.LoginActivity"/>
+        <activity android:name=".auth.Splashscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

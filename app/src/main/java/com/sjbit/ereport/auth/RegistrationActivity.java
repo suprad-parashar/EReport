@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sjbit.ereport.R;
+import com.sjbit.ereport.main.HomeActivity;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -77,7 +78,8 @@ public class RegistrationActivity extends AppCompatActivity {
 					auth.createUserWithEmailAndPassword(email, password)
 							.addOnCompleteListener(task -> {
 								if (task.isSuccessful()) {
-									//TODO: Update UI
+									startActivity(new Intent(RegistrationActivity.this, HomeActivity.class));
+									finish();
 								} else {
 									Toast.makeText(RegistrationActivity.this, "There was an error during Registration", Toast.LENGTH_LONG).show();
 								}

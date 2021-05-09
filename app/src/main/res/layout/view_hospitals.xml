@@ -4,11 +4,12 @@
     android:id="@+id/name"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="75dp"
+    android:minHeight="120dp"
     android:background="@drawable/rounded_corner_background"
     android:gravity="center"
     android:layout_margin="16dp"
-    android:textColor="@color/white"
+    android:textColor="@color/black"
     android:textStyle="bold"
     android:backgroundTint="@color/primary_color"
-    tools:text="Apollo Hospital" />
+    tools:text="Apollo Hospital"
+    android:textSize="24sp"/>

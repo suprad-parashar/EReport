@@ -14,7 +14,7 @@ import com.sjbit.ereport.R;
 
 public class Splashscreen extends AppCompatActivity {
 
-	private static final int SPLASH_TIMER = 4000;
+	private static final int SPLASH_TIMER = 2000;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

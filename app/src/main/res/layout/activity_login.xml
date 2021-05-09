@@ -9,20 +9,35 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.3"
+        android:alpha="0.1"
         android:contentDescription="@string/background_image"
-        android:scaleType="centerCrop"
-        android:src="@drawable/login_background"/>
+        android:scaleType="centerInside"
+        android:src="@drawable/logo"
+        android:layout_marginBottom="80dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="240dp"
+        android:layout_marginBottom="200dp"
         android:fontFamily="@font/nunito_semibold"
-        android:gravity="center"
         android:text="@string/login_greeting"
         android:textColor="@color/black"
-        android:textSize="36sp"
+        android:textAllCaps="true"
+        android:textSize="30sp"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/login_form" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="@string/login_text"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:paddingStart="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/login_form" />
 
@@ -48,7 +63,7 @@
             android:background="@drawable/rounded_border"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:padding="12dp"/>
+            android:padding="16dp" />
 
         <EditText
             android:id="@+id/password"
@@ -61,7 +76,17 @@
             android:hint="@string/password"
             android:importantForAutofill="no"
             android:inputType="textPassword"
-            android:padding="12dp" />
+            android:padding="16dp" />
+
+        <TextView
+            android:id="@+id/forgot_password"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/forgot_password_reverse"
+            android:textColor="@color/black"
+            android:textDirection="rtl"/>
     </LinearLayout>
 
     <Button
@@ -75,6 +100,7 @@
         android:textStyle="bold"
         android:text="@string/sign_in"
         android:textAllCaps="false"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -14,7 +14,7 @@ import android.widget.ImageView;
 
 public class Splashscreen extends AppCompatActivity {
 
-    private static int SPLASH_TIMER=4000;
+    private static int SPLASH_TIMER=2500;
     //variables
     ImageView backgroundImage;
 

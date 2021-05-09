@@ -21,4 +21,8 @@
     <string name="title_tab4">Docs</string>
     <string name="title_tab5">Profile</string>
     <string name="no_recent_activities">No Recent Activities</string>
+    <string name="upload_report">Upload Report</string>
+    <string name="upload_image">upload_image</string>
+    <string name="upload_prescription">Upload Prescription</string>
+    <string name="prescriptions">Prescriptions</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.sjbit.ereport.main.ui.upload;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +18,6 @@ import com.sjbit.ereport.main.HomeActivity;
 
 public class UploadBottomSheetDialog extends BottomSheetDialogFragment {
 
-	private ImageView reportUploadButton, prescriptionUploadButton;
-	private TextView reportUploadTextView, prescriptionUploadTextView;
-
 	@Override
 	public void onCancel(@NonNull DialogInterface dialog) {
 		super.onCancel(dialog);
@@ -35,5 +33,13 @@ public class UploadBottomSheetDialog extends BottomSheetDialogFragment {
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
+
+		TextView reportUploadTextView = view.findViewById(R.id.upload_report);
+		ImageView reportUploadButton = view.findViewById(R.id.upload_report_icon);
+		TextView prescriptionUploadTextView = view.findViewById(R.id.upload_prescription);
+		ImageView prescriptionUploadButton = view.findViewById(R.id.upload_prescription_icon);
+
+		reportUploadButton.setOnClickListener(v -> startActivity(new Intent(requireActivity(), ReportUploadActivity.class)));
+		reportUploadTextView.setOnClickListener(v -> startActivity(new Intent(requireActivity(), ReportUploadActivity.class)));
 	}
 }

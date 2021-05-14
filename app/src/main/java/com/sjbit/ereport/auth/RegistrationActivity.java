@@ -12,8 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.sjbit.ereport.R;
 import com.sjbit.ereport.main.HomeActivity;
+
+import java.util.Objects;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -41,8 +44,8 @@ public class RegistrationActivity extends AppCompatActivity {
 		signUpButton.setOnClickListener(view -> {
 			String name = nameEditText.getText().toString();
 			String email = emailEditText.getText().toString();
-			String password = passwordEditText.getText().toString();
-			String confirmPassword = confirmPasswordEditText.getText().toString();
+			String password = Objects.requireNonNull(passwordEditText.getText()).toString();
+			String confirmPassword = Objects.requireNonNull(confirmPasswordEditText.getText()).toString();
 			if (name.equals("")) {
 				nameEditText.setError("Name cannot be empty");
 				nameEditText.requestFocus();
@@ -79,6 +82,12 @@ public class RegistrationActivity extends AppCompatActivity {
 							.addOnCompleteListener(task -> {
 								if (task.isSuccessful()) {
 									startActivity(new Intent(RegistrationActivity.this, HomeActivity.class));
+									Objects.requireNonNull(auth.getCurrentUser())
+											.updateProfile(new UserProfileChangeRequest.Builder().setDisplayName(name).build())
+											.addOnCompleteListener(updateTask -> {
+												if (updateTask.isSuccessful())
+													startActivity(new Intent(RegistrationActivity.this, HomeActivity.class));
+											});
 									finish();
 								} else {
 									Toast.makeText(RegistrationActivity.this, "There was an error during Registration", Toast.LENGTH_LONG).show();

@@ -8,10 +8,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,7 +19,6 @@ public class LoginActivity extends AppCompatActivity {
 	//UI Variables.
 	private EditText emailEditText;
 	private EditText passwordEditText;
-	private TextView forgotPassword;
 
 
 	//Firebase Variables.
@@ -49,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
 		emailEditText = findViewById(R.id.email);
 		passwordEditText = findViewById(R.id.password);
-		forgotPassword = findViewById(R.id.forgot_password);
+		TextView forgotPassword = findViewById(R.id.forgot_password);
 		Button signInButton = findViewById(R.id.sign_in);
 		TextView registerTextView = findViewById(R.id.register);
 

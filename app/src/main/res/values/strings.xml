@@ -29,4 +29,7 @@
     <string name="login_text">Login</string>
     <string name="navigate_back_button">navigate_back</string>
     <string name="forgot_password_reverse">\?Forgot Password</string>
+    <string name="prescriptions_uploaded_label">Prescriptions Uploaded</string>
+    <string name="reports_uploaded_label">Reports Uploaded</string>
+    <string name="hospitals_visited_label">Hospitals Visited</string>
 </resources>

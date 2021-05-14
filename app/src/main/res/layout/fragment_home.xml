@@ -16,7 +16,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Welcome, Suprad!" />
+        android:text="Welcome, User!" />
 
     <TextView
         android:layout_width="match_parent"

@@ -39,4 +39,7 @@
     <string name="notifications_label">Notifications</string>
     <string name="about_label">About</string>
     <string name="logout_label">Logout</string>
+    <string name="hospitals_visited_label">Hospitals</string>
+    <string name="reports_uploaded_label">Reports</string>
+    <string name="prescriptions_uploaded_label">Prescriptions</string>
 </resources>

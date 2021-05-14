@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sjbit.ereport.R;
 
+/**
+ * Custom RecyclerView Adapter to set Hospital Data to corresponding View.
+ */
 public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder> {
 
 	String[] hospitals = {

@@ -18,6 +18,9 @@ import com.sjbit.ereport.main.HomeActivity;
 
 import java.util.Objects;
 
+/**
+ * Handles the Registration of the User.
+ */
 public class RegistrationActivity extends AppCompatActivity {
 
 	//UI Variables
@@ -32,6 +35,7 @@ public class RegistrationActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registration);
 
+		//Find Views.
 		nameEditText = findViewById(R.id.name);
 		emailEditText = findViewById(R.id.email);
 		passwordEditText = findViewById(R.id.password);
@@ -39,13 +43,18 @@ public class RegistrationActivity extends AppCompatActivity {
 		Button signUpButton = findViewById(R.id.sign_up);
 		TextView signInTextView = findViewById(R.id.sign_in);
 
+		//Redirect to Login Page.
 		signInTextView.setOnClickListener(view -> startActivity(new Intent(RegistrationActivity.this, LoginActivity.class)));
 
+		//Register User
 		signUpButton.setOnClickListener(view -> {
+			//Get Data
 			String name = nameEditText.getText().toString();
 			String email = emailEditText.getText().toString();
 			String password = Objects.requireNonNull(passwordEditText.getText()).toString();
 			String confirmPassword = Objects.requireNonNull(confirmPasswordEditText.getText()).toString();
+
+			//Validate Data
 			if (name.equals("")) {
 				nameEditText.setError("Name cannot be empty");
 				nameEditText.requestFocus();
@@ -78,6 +87,7 @@ public class RegistrationActivity extends AppCompatActivity {
 					confirmPasswordEditText.setError("Passwords do not match");
 					confirmPasswordEditText.requestFocus();
 				} else {
+					//Register User
 					auth.createUserWithEmailAndPassword(email, password)
 							.addOnCompleteListener(task -> {
 								if (task.isSuccessful()) {

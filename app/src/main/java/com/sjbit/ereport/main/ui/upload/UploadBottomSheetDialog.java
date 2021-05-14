@@ -16,6 +16,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.sjbit.ereport.R;
 import com.sjbit.ereport.main.HomeActivity;
 
+/**
+ * Handles showing of the Upload Bottom Sheet Modal.
+ */
 public class UploadBottomSheetDialog extends BottomSheetDialogFragment {
 
 	@Override
@@ -34,11 +37,13 @@ public class UploadBottomSheetDialog extends BottomSheetDialogFragment {
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 
+		//Find Views
 		TextView reportUploadTextView = view.findViewById(R.id.upload_report);
 		ImageView reportUploadButton = view.findViewById(R.id.upload_report_icon);
-		TextView prescriptionUploadTextView = view.findViewById(R.id.upload_prescription);
-		ImageView prescriptionUploadButton = view.findViewById(R.id.upload_prescription_icon);
+//		TextView prescriptionUploadTextView = view.findViewById(R.id.upload_prescription);
+//		ImageView prescriptionUploadButton = view.findViewById(R.id.upload_prescription_icon);
 
+		//Handle Report Upload
 		reportUploadButton.setOnClickListener(v -> startActivity(new Intent(requireActivity(), ReportUploadActivity.class)));
 		reportUploadTextView.setOnClickListener(v -> startActivity(new Intent(requireActivity(), ReportUploadActivity.class)));
 	}

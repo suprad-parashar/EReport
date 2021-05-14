@@ -22,21 +22,20 @@ public class Splashscreen extends AppCompatActivity {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_splashscreen);
 
-		//Hooks
-		//Variables
+		//UI Variables
 		ImageView backgroundImage = findViewById(R.id.splash_background_image);
 
 		//Animations
-		//Animations
 		Animation sideAnim = AnimationUtils.loadAnimation(this, R.anim.side_anim);
 
-		//set animations on elements
+		//Set animations on elements.
 		backgroundImage.setAnimation(sideAnim);
 
+		//Add Delay
 		new Handler().postDelayed(() -> {
-            Intent intent = new Intent(Splashscreen.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        }, SPLASH_TIMER);
+			Intent intent = new Intent(Splashscreen.this, LoginActivity.class);
+			startActivity(intent);
+			finish();
+		}, SPLASH_TIMER);
 	}
 }

@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sjbit.ereport.R;
 
-
+/**
+ * Handles the Hospitals View of the User.
+ */
 public class HospitalsFragment extends Fragment {
 
 	public View onCreateView(@NonNull LayoutInflater inflater,
@@ -24,6 +26,8 @@ public class HospitalsFragment extends Fragment {
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
+
+		//Setup Recycler View
 		RecyclerView hospitalsView = view.findViewById(R.id.hospitals_recycler_view);
 		GridLayoutManager manager = new GridLayoutManager(requireContext(), 2);
 		manager.setOrientation(RecyclerView.VERTICAL);

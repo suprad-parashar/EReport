@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment;
 
 import com.sjbit.ereport.R;
 
-
+/**
+ * Handles the Main Page of the User's Dashboard.
+ */
 public class HomeFragment extends Fragment {
 
 	public View onCreateView(@NonNull LayoutInflater inflater,

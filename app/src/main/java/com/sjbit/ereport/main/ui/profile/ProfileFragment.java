@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment;
 
 import com.sjbit.ereport.R;
 
-
+/**
+ * Handles the User's Profile.
+ */
 public class ProfileFragment extends Fragment {
 
 	public View onCreateView(@NonNull LayoutInflater inflater,

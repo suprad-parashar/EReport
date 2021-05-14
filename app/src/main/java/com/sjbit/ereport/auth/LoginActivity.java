@@ -1,6 +1,5 @@
 package com.sjbit.ereport.auth;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -14,16 +13,21 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.sjbit.ereport.R;
 import com.sjbit.ereport.main.HomeActivity;
 
+/**
+ * This class handles the Login Aspect of the Application.
+ */
 public class LoginActivity extends AppCompatActivity {
 
 	//UI Variables.
 	private EditText emailEditText;
 	private EditText passwordEditText;
 
-
 	//Firebase Variables.
 	private final FirebaseAuth auth = FirebaseAuth.getInstance();
 
+	/**
+	 * If User is already logged in, redirect to HomeActivity.
+	 */
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -33,26 +37,25 @@ public class LoginActivity extends AppCompatActivity {
 		}
 	}
 
-	@SuppressLint("WrongViewCast")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 
-//		FirebaseApp.initializeApp(this);
-//		auth = FirebaseAuth.getInstance();
-
+		//Find Views
 		emailEditText = findViewById(R.id.email);
 		passwordEditText = findViewById(R.id.password);
 		TextView forgotPassword = findViewById(R.id.forgot_password);
 		Button signInButton = findViewById(R.id.sign_in);
 		TextView registerTextView = findViewById(R.id.register);
 
+		//Handle User Registration
 		registerTextView.setOnClickListener(view -> {
 			Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
 			startActivity(intent);
 		});
 
+		//Handle User Sign In.
 		signInButton.setOnClickListener(view -> {
 			String email = emailEditText.getText().toString();
 			String password = passwordEditText.getText().toString();
@@ -67,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
 						}
 					});
 		});
+
 		//Handle Forgot Password Clicks.
 		forgotPassword.setOnClickListener(v -> {
 			final String email = emailEditText.getText().toString().trim();

@@ -9,10 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.sjbit.ereport.R;
 
-
+/**
+ * Handles Uploading of the Documents.
+ */
 public class UploadFragment extends Fragment {
 
 	public View onCreateView(@NonNull LayoutInflater inflater,
@@ -23,6 +24,8 @@ public class UploadFragment extends Fragment {
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
+
+		//Create a Bottom Sheet Dialog.
 		UploadBottomSheetDialog sheetDialogFragment = new UploadBottomSheetDialog();
 		sheetDialogFragment.show(getChildFragmentManager(), "bottomSheet");
 	}

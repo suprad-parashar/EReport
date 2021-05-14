@@ -11,6 +11,9 @@ import androidx.fragment.app.Fragment;
 
 import com.sjbit.ereport.R;
 
+/**
+ * Handles the Documents of the User.
+ */
 public class DocumentsFragment extends Fragment {
 
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

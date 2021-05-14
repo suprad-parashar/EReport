@@ -12,21 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/white"
-        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintHeight_percent="0.18"
         app:layout_constraintTop_toTopOf="parent">
-
-        <!--        <de.hdodenhof.circleimageview.CircleImageView-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="0dp"-->
-        <!--            android:id="@+id/profile_image"-->
-        <!--            app:layout_constraintDimensionRatio="1:1"-->
-        <!--            app:layout_constraintWidth_percent="0.35"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            android:padding="30dp"-->
-        <!--            android:src="@drawable/dummy_profile_picture" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -37,9 +24,7 @@
         android:background="@drawable/curved_background"
         android:backgroundTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/first_layout"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintTop_toBottomOf="@id/first_layout">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -64,10 +49,8 @@
         android:id="@+id/Username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/ic_home"
-        android:drawableTint="@color/white"
         android:gravity="center"
-        android:text="Srivalli S B"
+        android:text="User Name"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -78,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="srivalli.akshatha@gmail.com"
+        android:text="user@gmail.com"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -200,7 +183,11 @@
         android:background="@color/white"
         app:layout_constraintTop_toBottomOf="@id/banner"
         android:padding="10dp"
-        android:layout_margin="35dp"/>
+        android:textColor="@color/black"
+        android:text="@string/profile_settings_label"
+        android:layout_margin="35dp"
+        app:drawableEndCompat="@drawable/ic_baseline_play_arrow_24"
+        app:drawableTint="@color/black"/>
     <TextView
         android:id="@+id/about_button"
         android:layout_width="match_parent"
@@ -208,7 +195,13 @@
         android:background="@color/white"
         app:layout_constraintTop_toBottomOf="@id/profile_settings_button"
         android:padding="10dp"
-        android:layout_margin="35dp"/>
+        android:text="@string/notifications_label"
+        android:layout_marginLeft="35dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="35dp"
+        app:drawableEndCompat="@drawable/ic_baseline_play_arrow_24"
+        app:drawableTint="@color/black"/>
     <TextView
         android:id="@+id/notifications_button"
         android:layout_width="match_parent"
@@ -216,7 +209,13 @@
         android:background="@color/white"
         app:layout_constraintTop_toBottomOf="@id/about_button"
         android:padding="10dp"
-        android:layout_margin="35dp"/>
+        android:text="@string/about_label"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="35dp"
+        android:textColor="@color/black"
+        app:drawableEndCompat="@drawable/ic_baseline_play_arrow_24"
+        app:drawableTint="@color/black"/>
     <TextView
         android:id="@+id/logout_button"
         android:layout_width="match_parent"
@@ -224,7 +223,13 @@
         android:background="@color/white"
         app:layout_constraintTop_toBottomOf="@id/notifications_button"
         android:padding="10dp"
-        android:layout_margin="35dp"/>
+        android:text="@string/logout_label"
+        android:layout_marginLeft="35dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="35dp"
+        app:drawableEndCompat="@drawable/ic_baseline_play_arrow_24"
+        app:drawableTint="@color/black"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

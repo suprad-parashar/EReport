@@ -1,5 +1,7 @@
 package com.sjbit.ereport.storage;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,8 +19,8 @@ import org.jetbrains.annotations.NotNull;
  */
 public class Uploader {
 
-	private FirebaseAuth auth = FirebaseAuth.getInstance();
-	private FirebaseDatabase database = FirebaseDatabase.getInstance();
+	private static final FirebaseAuth auth = FirebaseAuth.getInstance();
+	private static final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
 	private boolean isChainValid() {
 		FirebaseUser user = auth.getCurrentUser();
@@ -30,7 +32,7 @@ public class Uploader {
 		return true;
 	}
 
-	private void addBlock(Block block) {
+	public static void addBlock(Block block) {
 		FirebaseUser user = auth.getCurrentUser();
 		assert user != null;
 		DatabaseReference reference = database.getReference().child("users").child(user.getUid()).child("blockchain");
@@ -41,16 +43,15 @@ public class Uploader {
 					block.setPreviousBlockHash(user.getUid());
 					reference.child("Block 0").setValue(block);
 				} else {
-					Block previousBlock = snapshot.child("Block " + (snapshot.getChildrenCount() - 1)).getValue(Block.class);
-					assert previousBlock != null;
-					block.setPreviousBlockHash(previousBlock.getBlockHash());
+					String previousBlockHash = (String) snapshot.child("Block " + (snapshot.getChildrenCount() - 1)).child("blockHash").getValue();
+					block.setPreviousBlockHash(previousBlockHash);
 					reference.child("Block " + snapshot.getChildrenCount()).setValue(block);
 				}
 			}
 
 			@Override
 			public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
+				Log.e("UPLOAD", error.toString());
 			}
 		});
 	}

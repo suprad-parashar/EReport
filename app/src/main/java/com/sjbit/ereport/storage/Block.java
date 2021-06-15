@@ -13,9 +13,13 @@ public class Block {
 	private BlockObject blockObject;
 	private int nonce = -1;
 
-	public Block(String previousBlockHash, Type type, BlockObject blockObject) {
+	public Block() {
+		//Empty Constructor
+	}
+
+	public Block(Type type, BlockObject blockObject) {
 		this.type = type;
-		this.previousBlockHash = previousBlockHash;
+		this.previousBlockHash = "";
 		this.blockObject = blockObject;
 		this.blockHash = calculateHash();
 	}

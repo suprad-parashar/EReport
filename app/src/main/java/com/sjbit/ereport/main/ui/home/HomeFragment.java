@@ -13,12 +13,15 @@ import androidx.fragment.app.Fragment;
 
 import com.sjbit.ereport.R;
 import com.sjbit.ereport.storage.Block;
+import com.sjbit.ereport.storage.Medicine;
+import com.sjbit.ereport.storage.Prescription;
 import com.sjbit.ereport.storage.Report;
 import com.sjbit.ereport.storage.Type;
 import com.sjbit.ereport.storage.Uploader;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -36,8 +39,14 @@ public class HomeFragment extends Fragment {
 		TextView userView = view.findViewById(R.id.welcome_user);
 		userView.setOnClickListener(view1 -> {
 			Toast.makeText(requireContext(), "TOUCH", Toast.LENGTH_LONG).show();
-			Report report = new Report(new Date(), "Dr. ABC", "Urine Routine", "Kanva Laboratories", "WBC: 16\nRBC: 0");
-			Block block = new Block(Type.REPORT, report);
+//			Report report = new Report(new Date(), "Dr. ABC", "Urine Routine", "Kanva Laboratories", "WBC: 16\nRBC: 0");
+			ArrayList<Medicine> medicines = new ArrayList<>();
+			Medicine medicine = new Medicine("Dolo 650", 1, 0, 1);
+			medicines.add(medicine);
+			medicine = new Medicine("Fabiflu", 2, 2, 2);
+			medicines.add(medicine);
+			Prescription prescription = new Prescription(new Date(), "Srivalli", medicines);
+			Block block = new Block(Type.PRESCRIPTION, prescription);
 			Uploader.addBlock(block);
 		});
 	}

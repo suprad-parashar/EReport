@@ -42,4 +42,5 @@
     <string name="hospitals_visited_label">Hospitals</string>
     <string name="reports_uploaded_label">Reports</string>
     <string name="prescriptions_uploaded_label">Prescriptions</string>
+    <string name="save">Save</string>
 </resources>

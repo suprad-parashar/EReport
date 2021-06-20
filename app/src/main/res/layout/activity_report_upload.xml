@@ -86,7 +86,9 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/rounded_border"
             android:importantForAutofill="no"
-            android:inputType="date"
+            android:inputType="none"
+            android:clickable="false"
+            android:focusable="false"
             android:padding="12dp"
             tools:ignore="LabelFor" />
 

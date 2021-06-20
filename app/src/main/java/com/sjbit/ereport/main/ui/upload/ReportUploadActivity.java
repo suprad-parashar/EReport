@@ -1,14 +1,18 @@
 package com.sjbit.ereport.main.ui.upload;
 
 import android.Manifest;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,8 +28,17 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 import com.sjbit.ereport.R;
+import com.sjbit.ereport.main.HomeActivity;
+import com.sjbit.ereport.storage.Block;
+import com.sjbit.ereport.storage.Report;
+import com.sjbit.ereport.storage.Type;
+import com.sjbit.ereport.storage.Uploader;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Handles the Report Upload Part of the Application.
@@ -35,9 +48,13 @@ public class ReportUploadActivity extends AppCompatActivity {
 	//UI Variables.
 	private EditText testNameEditText;
 	private EditText dataEditText;
+	private EditText hospitalNameEditText;
 
 	//Data Variables
 	private static final int RC_CHOOSE_IMAGE = 724;
+	private EditText referredByEditText;
+	private EditText dateOfReportEditText;
+	private Date dateOfReport = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +65,23 @@ public class ReportUploadActivity extends AppCompatActivity {
 		Button uploadImage = findViewById(R.id.upload_image);
 		Button openCamera = findViewById(R.id.open_camera);
 		testNameEditText = findViewById(R.id.test_name);
-//		EditText hospitalNameEditText = findViewById(R.id.hospital_name);
-//		EditText referredByEditText = findViewById(R.id.referred_by);
-//		EditText dateOfReportEditText = findViewById(R.id.date_of_report);
+		hospitalNameEditText = findViewById(R.id.hospital_name);
+		referredByEditText = findViewById(R.id.referred_by);
+		dateOfReportEditText = findViewById(R.id.date_of_report);
 		dataEditText = findViewById(R.id.data);
+
+		final Calendar newCalendar = Calendar.getInstance();
+		final DatePickerDialog StartTime = new DatePickerDialog(this, (view, year, monthOfYear, dayOfMonth) -> {
+			Calendar newDate = Calendar.getInstance();
+			newDate.set(year, monthOfYear, dayOfMonth);
+			dateOfReport = newDate.getTime();
+			String dateString = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+			dateOfReportEditText.setText(dateString);
+		}, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+
+		dateOfReportEditText.setOnClickListener(view -> {
+			StartTime.show();
+		});
 
 		//Handle Image Uploads from Gallery
 		uploadImage.setOnClickListener(v -> Dexter.withContext(this)
@@ -105,6 +135,42 @@ public class ReportUploadActivity extends AppCompatActivity {
 						permissionToken.continuePermissionRequest();
 					}
 				}).check());
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.save_menu, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
+		if (item.getItemId() == R.id.save_button) {
+			String testName = testNameEditText.getText().toString();
+			String hospitalName = hospitalNameEditText.getText().toString();
+			String referredBy = referredByEditText.getText().toString();
+			if (referredBy.equals(""))
+				referredBy = "Self";
+			String data = dataEditText.getText().toString();
+			if (testName.equals("")) {
+				testNameEditText.setError("Please Enter Test Name");
+				testNameEditText.requestFocus();
+			} else if (hospitalName.equals("")) {
+				hospitalNameEditText.setError("Please Enter Hospital Name");
+				hospitalNameEditText.requestFocus();
+			} else if (data.equals("")) {
+				dataEditText.setError("Data Cannot Be Empty");
+				dataEditText.requestFocus();
+			} else {
+				Report report = new Report(dateOfReport, referredBy, testName, hospitalName, data);
+				Block block = new Block(Type.REPORT, report);
+				Uploader.addBlock(block);
+				Toast.makeText(ReportUploadActivity.this, "Report Saved", Toast.LENGTH_LONG).show();
+				startActivity(new Intent(ReportUploadActivity.this, HomeActivity.class));
+				finish();
+			}
+		}
+		return true;
 	}
 
 	@Override

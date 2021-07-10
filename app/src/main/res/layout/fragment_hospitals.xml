@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/hospitals_recycler_view"
-    tools:context=".main.ui.hospitals.HospitalsFragment"/>
+    android:orientation="vertical"
+    tools:context=".main.ui.hospitals.HospitalsFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/hospitals_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:text="No Hospitals Visited!"
+        android:layout_height="match_parent"
+        android:gravity="center" />
+
+</LinearLayout>

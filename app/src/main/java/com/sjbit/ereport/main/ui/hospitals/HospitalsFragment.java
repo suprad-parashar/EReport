@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,8 +34,6 @@ public class HospitalsFragment extends Fragment {
 	private static final FirebaseAuth auth = FirebaseAuth.getInstance();
 	private static final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-	public static HashSet<String> hospitals= new HashSet<>();
-
 	public View onCreateView(@NonNull LayoutInflater inflater,
 							 ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.fragment_hospitals, container, false);
@@ -43,18 +42,11 @@ public class HospitalsFragment extends Fragment {
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		getHospitalFromFirebase();
-		//Setup Recycler View
-		RecyclerView hospitalsView = view.findViewById(R.id.hospitals_recycler_view);
-		GridLayoutManager manager = new GridLayoutManager(requireContext(), 2);
-		manager.setOrientation(RecyclerView.VERTICAL);
-		hospitalsView.setAdapter(new HospitalAdapter(hospitals));
-		hospitalsView.setLayoutManager(manager);
-	}
-
-	public static void getHospitalFromFirebase(){
 		FirebaseUser user = auth.getCurrentUser();
 		assert user != null;
+		HashSet<String> hospitals= new HashSet<>();
+		RecyclerView hospitalsView = view.findViewById(R.id.hospitals_recycler_view);
+		TextView emptyView = view.findViewById(R.id.empty_view);
 		DatabaseReference reference = database.getReference().child("users").child(user.getUid()).child("blockchain");
 		reference.addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
@@ -64,7 +56,17 @@ public class HospitalsFragment extends Fragment {
 						hospitals.add(snap.child("blockObject").child("hospitalName").getValue().toString());
 					}
 				}
-				Log.i("Hospitals",hospitals.toString());
+				if (hospitals.size() == 0) {
+					emptyView.setVisibility(View.VISIBLE);
+					hospitalsView.setVisibility(View.GONE);
+				} else {
+					emptyView.setVisibility(View.GONE);
+					hospitalsView.setVisibility(View.VISIBLE);
+					GridLayoutManager manager = new GridLayoutManager(requireContext(), 2);
+					manager.setOrientation(RecyclerView.VERTICAL);
+					hospitalsView.setAdapter(new HospitalAdapter(hospitals));
+					hospitalsView.setLayoutManager(manager);
+				}
 			}
 
 			@Override

@@ -40,11 +40,13 @@ public class UploadBottomSheetDialog extends BottomSheetDialogFragment {
 		//Find Views
 		TextView reportUploadTextView = view.findViewById(R.id.upload_report);
 		ImageView reportUploadButton = view.findViewById(R.id.upload_report_icon);
-//		TextView prescriptionUploadTextView = view.findViewById(R.id.upload_prescription);
-//		ImageView prescriptionUploadButton = view.findViewById(R.id.upload_prescription_icon);
+		TextView prescriptionUploadTextView = view.findViewById(R.id.upload_prescription);
+		ImageView prescriptionUploadButton = view.findViewById(R.id.upload_prescription_icon);
 
 		//Handle Report Upload
 		reportUploadButton.setOnClickListener(v -> startActivity(new Intent(requireActivity(), ReportUploadActivity.class)));
 		reportUploadTextView.setOnClickListener(v -> startActivity(new Intent(requireActivity(), ReportUploadActivity.class)));
+		prescriptionUploadButton.setOnClickListener(v -> startActivity(new Intent(requireActivity(), PresciptionUploadActivity.class)));
+		prescriptionUploadTextView.setOnClickListener(v -> startActivity(new Intent(requireActivity(), PresciptionUploadActivity.class)));
 	}
 }

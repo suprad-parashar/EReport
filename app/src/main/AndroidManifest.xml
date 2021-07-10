@@ -17,6 +17,7 @@
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="ocr" />
         <activity android:name=".main.ui.upload.ReportUploadActivity" />
+        <activity android:name=".main.ui.upload.PresciptionUploadActivity" />
         <activity
             android:name=".main.HomeActivity"
             android:label="@string/title_activity_home" />

@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EReport">
-        <activity android:name=".main.ui.documents.DocumentListActivity"></activity>
+        <activity android:name=".main.ui.documents.PrescriptionDisplayActivity"></activity>
+        <activity android:name=".main.ui.documents.ReportDisplayActivity" />
+        <activity android:name=".main.ui.documents.DocumentListActivity" />
 
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"

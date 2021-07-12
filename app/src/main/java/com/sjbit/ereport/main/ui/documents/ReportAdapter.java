@@ -1,5 +1,8 @@
 package com.sjbit.ereport.main.ui.documents;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +23,10 @@ import java.util.ArrayList;
 public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportViewHolder> {
 
 	ArrayList<Report> docs = new ArrayList<>();
+	Context context;
 
-	ReportAdapter(ArrayList<Report> docs) {
+	ReportAdapter(Context context, ArrayList<Report> docs) {
+		this.context = context;
 		this.docs = docs;
 	}
 
@@ -39,6 +44,12 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportView
 		holder.reportNameTextView.setText(object.getTestName());
 		holder.hospitalTextView.setText(object.getHospitalName());
 		holder.dateTextView.setText(formatter.format(object.getDate()));
+		holder.itemView.setOnClickListener(view -> {
+			Intent intent = new Intent(context, ReportDisplayActivity.class);
+			intent.putExtra("obj", object);
+			intent.putExtra("date", formatter.format(object.getDate()));
+			context.startActivity(intent);
+		});
 	}
 
 	@Override

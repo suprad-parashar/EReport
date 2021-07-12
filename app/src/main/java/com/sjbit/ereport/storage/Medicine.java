@@ -1,6 +1,8 @@
 package com.sjbit.ereport.storage;
 
-public class Medicine {
+import java.io.Serializable;
+
+public class Medicine implements Serializable {
 	String medicineName;
 	private int morningDose;
 	private int afternoonDose;

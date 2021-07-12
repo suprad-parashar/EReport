@@ -58,7 +58,7 @@ public class DocumentListActivity extends AppCompatActivity {
 					} else {
 						emptyView.setVisibility(View.GONE);
 						recyclerView.setVisibility(View.VISIBLE);
-						recyclerView.setAdapter(new ReportAdapter(reports));
+						recyclerView.setAdapter(new ReportAdapter(DocumentListActivity.this, reports));
 					}
 				}
 
@@ -85,7 +85,7 @@ public class DocumentListActivity extends AppCompatActivity {
 					} else {
 						emptyView.setVisibility(View.GONE);
 						recyclerView.setVisibility(View.VISIBLE);
-						recyclerView.setAdapter(new PrescriptionAdapter(prescriptions));
+						recyclerView.setAdapter(new PrescriptionAdapter(DocumentListActivity.this, prescriptions));
 					}
 				}
 

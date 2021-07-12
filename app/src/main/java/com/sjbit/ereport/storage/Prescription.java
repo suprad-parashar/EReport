@@ -1,9 +1,10 @@
 package com.sjbit.ereport.storage;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Prescription extends BlockObject {
+public class Prescription extends BlockObject implements Serializable {
 	private ArrayList<Medicine> medicines;
 
 	public Prescription() {

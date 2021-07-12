@@ -1,8 +1,11 @@
 package com.sjbit.ereport.storage;
 
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class Report extends BlockObject {
+public class Report extends BlockObject implements Serializable {
 	private String testName;
 	private String hospitalName;
 	private String data;

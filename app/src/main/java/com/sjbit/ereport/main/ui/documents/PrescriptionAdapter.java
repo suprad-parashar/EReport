@@ -1,5 +1,7 @@
 package com.sjbit.ereport.main.ui.documents;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +22,10 @@ import java.util.ArrayList;
 public class PrescriptionAdapter extends RecyclerView.Adapter<PrescriptionAdapter.DocumentViewHolder> {
 
 	ArrayList<Prescription> docs = new ArrayList<>();
+	Context context;
 
-	PrescriptionAdapter(ArrayList<Prescription> docs) {
+	PrescriptionAdapter(Context context, ArrayList<Prescription> docs) {
+		this.context = context;
 		this.docs = docs;
 	}
 
@@ -39,7 +43,13 @@ public class PrescriptionAdapter extends RecyclerView.Adapter<PrescriptionAdapte
 		Prescription object = (Prescription) docs.get(position);
 		holder.doctorNameTextView.setText(object.getDoctorName());
 		holder.dateTextView.setText(formatter.format(object.getDate()));
-
+		holder.itemView.setOnClickListener(view -> {
+			Intent intent = new Intent(context, PrescriptionDisplayActivity.class);
+			intent.putExtra("obj", object);
+			intent.putExtra("date", formatter.format(object.getDate()));
+			intent.putExtra("dname", object.getDoctorName());
+			context.startActivity(intent);
+		});
 	}
 
 	@Override

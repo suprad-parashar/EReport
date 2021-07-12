@@ -13,9 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EReport">
+        <activity android:name=".main.ui.documents.DocumentListActivity"></activity>
+
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="ocr" />
+
         <activity android:name=".main.ui.upload.ReportUploadActivity" />
         <activity android:name=".main.ui.upload.PresciptionUploadActivity" />
         <activity
@@ -26,6 +29,7 @@
         <activity android:name=".auth.Splashscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

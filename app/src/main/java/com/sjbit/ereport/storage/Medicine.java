@@ -6,6 +6,10 @@ public class Medicine {
 	private int afternoonDose;
 	private int eveningDose;
 
+	public Medicine() {
+
+	}
+
 	public Medicine(String medicineName, int morningDose, int afternoonDose, int eveningDose) {
 		this.medicineName = medicineName;
 		this.morningDose = morningDose;

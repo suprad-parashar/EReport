@@ -110,29 +110,10 @@ public class PresciptionUploadActivity extends AppCompatActivity {
 				}).check());
 
 		//Handle Camera Intent
-		openCamera.setOnClickListener(v -> Dexter.withContext(this)
-				.withPermission(Manifest.permission.CAMERA)
-				.withListener(new PermissionListener() {
-					@Override
-					public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-						//TODO: Handle Camera Intent.
-					}
-
-					@Override
-					public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-						AlertDialog.Builder builder = new AlertDialog.Builder(PresciptionUploadActivity.this);
-						builder.setTitle("Permission Required")
-								.setMessage("Camera is required to capture your document.")
-								.setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
-								.setCancelable(true);
-						builder.create().show();
-					}
-
-					@Override
-					public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-						permissionToken.continuePermissionRequest();
-					}
-				}).check());
+		openCamera.setOnClickListener(v -> {
+			startActivity(new Intent(PresciptionUploadActivity.this, HomeActivity.class));
+			HomeActivity.navView.setSelectedItemId(R.id.navigation_home);
+		});
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package com.sjbit.ereport.main.ui.profile;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -55,9 +57,9 @@ public class ProfileFragment extends Fragment {
 		userName = view.findViewById(R.id.Username);
 		userEmail = view.findViewById(R.id.email);
 
-		profileSettings = view.findViewById(R.id.profile_settings_button);
-		notifications = view.findViewById(R.id.notifications_button);
-		about = view.findViewById(R.id.about_button);
+//		profileSettings = view.findViewById(R.id.profile_settings_button);
+//		notifications = view.findViewById(R.id.notifications_button);
+		about = view.findViewById(R.id.notifications_button);
 		logout = view.findViewById(R.id.logout_button);
 
 		FirebaseUser user = auth.getCurrentUser();
@@ -65,15 +67,31 @@ public class ProfileFragment extends Fragment {
 		userName.setText(user.getDisplayName());
 		userEmail.setText(user.getEmail());
 
-		profileSettings.setOnClickListener(v -> {
-			//TODO: Profile Settings
+		about.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
+				builder.setTitle("About")
+						.setMessage("This application is Created by Sandeep, Srivalli and Suprad of ISE B for the Final Year Project.")
+						.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialogInterface, int i) {
+								dialogInterface.dismiss();
+							}
+						});
+				builder.create().show();
+			}
 		});
-		notifications.setOnClickListener(v -> {
-			//TODO: Notifications
-		});
-		about.setOnClickListener(v -> {
-			//TODO: About
-		});
+
+//		profileSettings.setOnClickListener(v -> {
+//			//TODO: Profile Settings
+//		});
+//		notifications.setOnClickListener(v -> {
+//			//TODO: Notifications
+//		});
+//		about.setOnClickListener(v -> {
+//			//TODO: About
+//		});
 		logout.setOnClickListener(v -> {
 			auth.signOut();
 			startActivity(new Intent(requireActivity(), LoginActivity.class));

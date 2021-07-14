@@ -71,7 +71,7 @@ public class HomeFragment extends Fragment {
         //Setup Recycler View.
         homeActivitiesRecyclerView = view.findViewById(R.id.home_cards_list);
         LinearLayoutManager manager = new LinearLayoutManager(requireContext());
-        manager.setOrientation(RecyclerView.HORIZONTAL);
+        manager.setOrientation(RecyclerView.VERTICAL);
         homeActivitiesRecyclerView.setLayoutManager(manager);
 
         //Set Activities Data.
@@ -114,7 +114,7 @@ public class HomeFragment extends Fragment {
                     count--;
                     index--;
                 }
-				homeActivitiesRecyclerView.setAdapter(new MyActivitiesAdapter(requireContext(), activities, false));
+				homeActivitiesRecyclerView.setAdapter(new MyActivitiesAdapter(requireContext(), activities, true));
             }
 
             @Override

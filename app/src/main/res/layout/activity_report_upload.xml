@@ -118,10 +118,10 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/upload_image"
+        android:id="@+id/open_camera"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/upload_image"
+        android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent="0.45" />
@@ -136,10 +136,10 @@
     <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <Button
-        android:id="@+id/open_camera"
+        android:id="@+id/upload_image"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/open_camera"
+        android:text="@string/upload_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.45" />

@@ -43,4 +43,7 @@
     <string name="reports_uploaded_label">Reports</string>
     <string name="prescriptions_uploaded_label">Prescriptions</string>
     <string name="save">Save</string>
+    <string name="empty_activities">No Activities.</string>
+    <string name="welcome_back">Welcome!</string>
+    <string name="recent_activities">Recent Activities</string>
 </resources>

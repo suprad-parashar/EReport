@@ -2,19 +2,26 @@ package com.sjbit.ereport.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.sjbit.ereport.R;
 import com.sjbit.ereport.main.HomeActivity;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -91,13 +98,20 @@ public class RegistrationActivity extends AppCompatActivity {
 					auth.createUserWithEmailAndPassword(email, password)
 							.addOnCompleteListener(task -> {
 								if (task.isSuccessful()) {
-									startActivity(new Intent(RegistrationActivity.this, HomeActivity.class));
-									Objects.requireNonNull(auth.getCurrentUser())
-											.updateProfile(new UserProfileChangeRequest.Builder().setDisplayName(name).build())
-											.addOnCompleteListener(updateTask -> {
-												if (updateTask.isSuccessful())
-													startActivity(new Intent(RegistrationActivity.this, HomeActivity.class));
-											});
+									FirebaseUser user = auth.getCurrentUser();
+									UserProfileChangeRequest profileUpdates =  new UserProfileChangeRequest.Builder().setDisplayName(name).build();
+									user.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
+										@Override
+										public void onComplete(@NonNull @NotNull Task<Void> task) {
+											if(task.isSuccessful()){
+												Log.d("Success","User Profile Update");
+												startActivity(new Intent(RegistrationActivity.this, HomeActivity.class));
+											}
+											else{
+												Log.d("Failure","User Profile Failed");
+											}
+										}
+									});
 									finish();
 								} else {
 									Toast.makeText(RegistrationActivity.this, "There was an error during Registration", Toast.LENGTH_LONG).show();
